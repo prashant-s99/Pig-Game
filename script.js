@@ -20,6 +20,7 @@ score1.textContent=0;
 score2.textContent=0;
 dice.classList.add('hidden');
 
+//Switching player function.
 const switchPlayer= ()=>{
     currentScore=0;
     document.getElementById(`current-${activePlayer}`).textContent=currentScore;
@@ -35,6 +36,7 @@ const switchPlayer= ()=>{
 //Rolling dice functionality
 btnRoll.addEventListener('click',function(){
     dice.classList.remove('hidden');
+
     //Generating a random number.
     const dicenum= Math.trunc(Math.random() * 6) + 1;
 
@@ -47,7 +49,6 @@ btnRoll.addEventListener('click',function(){
     {
         currentScore+=dicenum;
         document.getElementById(`current-${activePlayer}`).textContent=currentScore;
-
     }
     else //Switch to next player when dice shows '1'
     {   
@@ -55,18 +56,17 @@ btnRoll.addEventListener('click',function(){
     }    
 });
 
-document.querySelector('.btn-hold').addEventListener('click', function(){
-    console.log('a');
+// 'Hold' button functionality.
+btnHold.addEventListener('click', function(){
     document.getElementById(`score-${activePlayer}`).textContent= Number(document.getElementById(`score-${activePlayer}`).textContent) + currentScore;
     switchPlayer();
 });
 
-
-document.querySelector('.btn-new').addEventListener('click', function(){
+// 'New Game' button functionality.
+btnNew.addEventListener('click', function(){
 score1.textContent=0;
 score2.textContent=0;
 currentScr1.textContent=0;
 currentScr2.textContent=0;
 dice.classList.add('hidden');
-
 });
