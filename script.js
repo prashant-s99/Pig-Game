@@ -63,7 +63,7 @@ btnRoll.addEventListener('click',function(){
 
         //Displaying the dice.
         dice.classList.remove('hidden');
-        dice.src=`/DiceImages/dice-${dicenum}.png`;
+        dice.src=`./DiceImages/dice-${dicenum}.png`;
 
         //Checking for rolled 1: if true switch the player
         if(dicenum!==1) //Add to current score.
