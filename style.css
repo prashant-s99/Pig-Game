@@ -48,6 +48,7 @@ main {
 .name {
     position: relative;
     font-size: 4rem;
+    color: rgb(30, 28, 28);
     text-transform: uppercase;
     letter-spacing: 1px;
     word-spacing: 2px;
@@ -66,7 +67,7 @@ main {
     background-color: rgba(255, 255, 255, 0.4);
   }
   .player-active .name {
-    font-weight: 700;
+    font-weight: 600;
   }
   .player-active .score {
     font-weight: 400;
@@ -103,7 +104,7 @@ main {
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
-    color: #444;
+    color: #000000;
     background: none;
     border: none;
     font-family: inherit;
@@ -114,7 +115,7 @@ main {
     transition: all 0.2s;
   
     background-color: white;
-    background-color: rgba(255, 255, 255, 0.6);
+    background-color: #ffffff;
     backdrop-filter: blur(10px);
   
     padding: 0.7rem 2.5rem;

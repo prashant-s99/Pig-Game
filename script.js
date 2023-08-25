@@ -13,15 +13,28 @@ const btnRoll= document.querySelector('.btn-roll');
 const btnHold= document.querySelector('.btn-hold');
 
 let currentScore=0;
-let activePlayer=0;
+let activePlayer=1;
 
 //Initial Conditions
 score1.textContent=0;
 score2.textContent=0;
 dice.classList.add('hidden');
 
+const switchPlayer= ()=>{
+    currentScore=0;
+    document.getElementById(`current-${activePlayer}`).textContent=currentScore;
+
+    document.querySelector(`.player-${activePlayer}`).classList.remove('player-active');
+
+    activePlayer= activePlayer === 1 ? 2 : 1;
+
+    document.querySelector(`.player-${activePlayer}`).classList.add('player-active');    
+}
+
+
 //Rolling dice functionality
 btnRoll.addEventListener('click',function(){
+    dice.classList.remove('hidden');
     //Generating a random number.
     const dicenum= Math.trunc(Math.random() * 6) + 1;
 
@@ -33,15 +46,27 @@ btnRoll.addEventListener('click',function(){
     if(dicenum!==1) //Add to current score.
     {
         currentScore+=dicenum;
-        currentScr1.textContent=currentScore;
+        document.getElementById(`current-${activePlayer}`).textContent=currentScore;
+
     }
-    else //Switch to next player
-    {
-        currentScore=0;
-        currentScr1.textContent=currentScore;
-        document.querySelector(`.player-${activePlayer}`).classList.remove('player-active');
-        activePlayer= activePlayer === 1 ? 2 : 1;
-        document.querySelector(`.player-${activePlayer}`).classList.add('player-active');
-    }
-    
+    else //Switch to next player when dice shows '1'
+    {   
+        switchPlayer();  
+    }    
+});
+
+document.querySelector('.btn-hold').addEventListener('click', function(){
+    console.log('a');
+    document.getElementById(`score-${activePlayer}`).textContent= Number(document.getElementById(`score-${activePlayer}`).textContent) + currentScore;
+    switchPlayer();
+});
+
+
+document.querySelector('.btn-new').addEventListener('click', function(){
+score1.textContent=0;
+score2.textContent=0;
+currentScr1.textContent=0;
+currentScr2.textContent=0;
+dice.classList.add('hidden');
+
 });
